@@ -12,8 +12,8 @@ before_install:
 after_success:
 - node_modules/.bin/codecov
 before_deploy:
-  - git tag "v$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",0]//g' | tr -d '[[:space:]]')$TRAVIS_BUILD_NUMBER"
-  - git describe --exact-match --tags $(git log -n1 --pretty='%h')
+  - git tag $(node tools/travisTag.js)
+  - git describe --exact-match --tags "$(git log -n1 --pretty='%h')"
 deploy:
   provider: releases
   api_key:
