@@ -122,6 +122,7 @@ function matchRouteDeep(
   route, location, remainingPathname, paramNames, paramValues, callback
 ) {
   let pattern = route.path || ''
+  let sensitive = !!route.sensitive
 
   if (pattern.charAt(0) === '/') {
     remainingPathname = location.pathname
@@ -133,7 +134,7 @@ function matchRouteDeep(
   // we're not just searching for potential nested absolute paths.
   if (remainingPathname !== null && pattern) {
     try {
-      const matched = matchPattern(pattern, remainingPathname)
+      const matched = matchPattern(pattern, remainingPathname, sensitive)
       if (matched) {
         remainingPathname = matched.remainingPathname
         paramNames = [ ...paramNames, ...matched.paramNames ]

@@ -1,5 +1,11 @@
 # React Router [![Travis][build-badge]][build] [![npm package][npm-badge]][npm]
 
+### Fork reason
+
+React router turns to "route is a component" concept, so you can not use `onEnter` and other fancy stuff in `react-router@4.x`. So this repository is a fork of `react-router@3.2` with following changes:
+
+- Case sensitive routes `<Route ... sensitive />`
+
 <img src="/logo/vertical@2x.png" height="150"/>
 
 React Router is a complete routing library for [React](https://facebook.github.io/react).

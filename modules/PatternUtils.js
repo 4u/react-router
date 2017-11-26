@@ -82,7 +82,7 @@ export function compilePattern(pattern) {
  * - paramNames
  * - paramValues
  */
-export function matchPattern(pattern, pathname) {
+export function matchPattern(pattern, pathname, sensitive) {
   // Ensure pattern starts with leading slash for consistency with pathname.
   if (pattern.charAt(0) !== '/') {
     pattern = `/${pattern}`
@@ -98,7 +98,7 @@ export function matchPattern(pattern, pathname) {
     regexpSource += '$'
   }
 
-  const match = pathname.match(new RegExp(`^${regexpSource}`, 'i'))
+  const match = pathname.match(new RegExp(`^${regexpSource}`, sensitive ? '' : 'i'))
   if (match == null) {
     return null
   }
@@ -129,8 +129,8 @@ export function getParamNames(pattern) {
   return compilePattern(pattern).paramNames
 }
 
-export function getParams(pattern, pathname) {
-  const match = matchPattern(pattern, pathname)
+export function getParams(pattern, pathname, sensitive) {
+  const match = matchPattern(pattern, pathname, sensitive)
   if (!match) {
     return null
   }

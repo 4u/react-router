@@ -73,6 +73,7 @@ function routeIsActive(pathname, routes, params) {
   for (let i = 0, len = routes.length; i < len; ++i) {
     const route = routes[i]
     const pattern = route.path || ''
+    const sensitive = !!route.sensitive
 
     if (pattern.charAt(0) === '/') {
       remainingPathname = pathname
@@ -81,7 +82,7 @@ function routeIsActive(pathname, routes, params) {
     }
 
     if (remainingPathname !== null && pattern) {
-      const matched = matchPattern(pattern, remainingPathname)
+      const matched = matchPattern(pattern, remainingPathname, sensitive)
       if (matched) {
         remainingPathname = matched.remainingPathname
         paramNames = [ ...paramNames, ...matched.paramNames ]

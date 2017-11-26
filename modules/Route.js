@@ -1,5 +1,5 @@
 import createReactClass from 'create-react-class'
-import { string, func } from 'prop-types'
+import { string, func, bool } from 'prop-types'
 import invariant from 'invariant'
 import { createRouteFromReactElement } from './RouteUtils'
 import { component, components } from './InternalPropTypes'
@@ -24,6 +24,7 @@ const Route = createReactClass({
 
   propTypes: {
     path: string,
+    sensitive: bool,
     component,
     components,
     getComponent: func,
