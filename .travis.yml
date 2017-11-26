@@ -11,6 +11,8 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 after_success:
 - node_modules/.bin/codecov
+before_deploy:
+  - git tag "$(date +'%Y%m%d%').$TRAVIS_BUILD_NUMBER"
 deploy:
   provider: releases
   api_key:
