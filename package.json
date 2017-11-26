@@ -1,6 +1,6 @@
 {
   "name": "react-router",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "A complete routing library for React",
   "files": [
     "*.md",
@@ -13,8 +13,8 @@
   "module": "es/index",
   "jsnext:main": "es/index",
   "repository": "ReactTraining/react-router",
-  "homepage": "https://github.com/ReactTraining/react-router#readme",
-  "bugs": "https://github.com/ReactTraining/react-router/issues",
+  "homepage": "https://github.com/4u/react-router#readme",
+  "bugs": "https://github.com/4u/react-router/issues",
   "scripts": {
     "build": "npm run build-cjs && npm run build-es",
     "build-cjs": "rimraf lib && cross-env BABEL_ENV=cjs babel ./modules -d lib --ignore __tests__",

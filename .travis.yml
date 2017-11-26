@@ -11,7 +11,17 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 after_success:
 - node_modules/.bin/codecov
-branches:
-  only:
-  - master
-  - next
+deploy:
+  provider: releases
+  api_key:
+    secure: 21YL/0MnBRz2ZwacHDNUxBVrWmqHV3IjNFBaCD7N10GQ7VFkZzFq5VQHQyHRBUJ+0g6O9QKzCWwcnU967yx6+DZEpXNUj24jGwBflJZ39NaNTOp7E1eJ4OV0yVdV2i5OLZwEDmh7q7uXX/uG6fergeNvvwk7ArZrxWP2aAMcV5FH2ogY0mgvHVkIiF49Gl7S+CIpSQ+h7FyZko7HdAdAhqcYC3spL42wPY1EhWf333nupNbh+Alp/lf+Ns5C+OWLmd+yxByv5d3xtPC2pKNjKQbHsOdp1keu3NI+C+bzhcd2BoocP/rBWROTXPRi8/+dfvjZqavfovdFDJNuGLX4D5Stm9JWIy8Dcb7rP/lA96efpJW8ufWog55WTkZ7MU4r8NBIOLzRRhuaGIb9bxEaj+0cYPs6aZAg7WvobgkGw1KiUwfS8sSmYji0A8uDCcLvecYPkZNVA3T9+WX4P5Lbk7kNj9oD/BJBM30hFp73QmfcgPYdjg9PrawynmttGXotj8zA6kGd/BsIJtnqZNtlWdfO5qjn2oUoGZuke0P0N31uOH2DQmsgpGEHZgztLKc7ZmnPnCZ5IPD/1jFpMnlxgg4dBGzqaf7kwGnQ9Hxztdm7o+gG/2RCCuWItx24u+TpMdign6iO/VtL7R2qP6DpOkCcrILKQFvzDkJR7z5u8bM=
+  skip_cleanup: true
+  file_glob: true
+  file:
+    - "lib/*"
+    - "es/*"
+    - "package.json"
+    - "package-lock.json"
+  file: lib
+  on:
+    repo: 4u/react-router
