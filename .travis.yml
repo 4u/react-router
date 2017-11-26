@@ -24,6 +24,5 @@ deploy:
     - "es/*"
     - "package.json"
     - "package-lock.json"
-  file: lib
   on:
     repo: 4u/react-router
