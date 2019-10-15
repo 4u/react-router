@@ -56,6 +56,7 @@ var Link = createReactClass({
     activeClassName: string,
     onlyActiveOnIndex: bool.isRequired,
     onClick: func,
+    replace: bool,
     target: string,
     innerRef: oneOfType([string, func])
   },
@@ -63,6 +64,7 @@ var Link = createReactClass({
   getDefaultProps: function getDefaultProps() {
     return {
       onlyActiveOnIndex: false,
+      replace: false,
       style: {}
     };
   },
@@ -83,7 +85,8 @@ var Link = createReactClass({
 
     event.preventDefault();
 
-    router.push(resolveToLocation(this.props.to, router));
+    var routerAction = this.props.replace ? 'replace' : 'push';
+    router[routerAction](resolveToLocation(this.props.to, router));
   },
   render: function render() {
     var _props = this.props,
