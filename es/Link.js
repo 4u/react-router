@@ -97,9 +97,9 @@ var Link = createReactClass({
         innerRef = _props.innerRef,
         props = _objectWithoutProperties(_props, ['to', 'activeClassName', 'activeStyle', 'onlyActiveOnIndex', 'innerRef']);
 
+    delete props.replace;
+
     // Ignore if rendered outside the context of router to simplify unit testing.
-
-
     var router = this.context.router;
 
 

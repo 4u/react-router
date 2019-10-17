@@ -96,6 +96,7 @@ const Link = createReactClass({
 
   render() {
     const { to, activeClassName, activeStyle, onlyActiveOnIndex, innerRef, ...props } = this.props
+    delete props.replace
 
     // Ignore if rendered outside the context of router to simplify unit testing.
     const { router } = this.context
