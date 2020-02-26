@@ -4,7 +4,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 import React from 'react';
 import createReactClass from 'create-react-class';
-import { bool, object, string, func, oneOfType } from 'prop-types';
+import { bool, object, string, func, oneOfType, shape, elementType } from 'prop-types';
 import invariant from 'invariant';
 import { routerShape } from './PropTypes';
 import { ContextSubscriber } from './ContextUtils';
@@ -58,7 +58,7 @@ var Link = createReactClass({
     onClick: func,
     replace: bool,
     target: string,
-    innerRef: oneOfType([string, func])
+    innerRef: oneOfType([string, func, shape({ current: elementType })])
   },
 
   getDefaultProps: function getDefaultProps() {

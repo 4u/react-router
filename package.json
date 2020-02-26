@@ -1,6 +1,6 @@
 {
   "name": "react-router",
-  "version": "3.2.1",
+  "version": "5.1.3",
   "description": "A complete routing library for React",
   "files": [
     "*.md",
@@ -22,6 +22,7 @@
     "build-umd": "cross-env NODE_ENV=development webpack modules/index.js umd/ReactRouter.js",
     "build-min": "cross-env NODE_ENV=production webpack -p modules/index.js umd/ReactRouter.min.js",
     "lint": "eslint examples modules scripts tools *.js",
+    "prepublishOnly": "node ./scripts/build.js",
     "start": "node examples/server.js",
     "test": "npm run lint && npm run test-node && npm run test-browser",
     "test-browser": "cross-env NODE_ENV=test karma start",
@@ -39,7 +40,8 @@
     "hoist-non-react-statics": "^2.3.1",
     "invariant": "^2.2.1",
     "loose-envify": "^1.2.0",
-    "prop-types": "^15.5.6",
+    "prop-types": "^15.7.2",
+    "react-is": "^16.8.6",
     "warning": "^3.0.0"
   },
   "peerDependencies": {
@@ -70,7 +72,7 @@
     "express": "^4.14.0",
     "express-urlrewrite": "^1.2.0",
     "gzip-size": "^4.1.0",
-    "karma": "^2.0.0",
+    "karma": "^4.1.0",
     "karma-browserstack-launcher": "^1.0.1",
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
@@ -81,9 +83,9 @@
     "mocha": "^5.0.4",
     "pretty-bytes": "^4.0.2",
     "qs": "^6.2.1",
-    "react": "^16.0.0-rc",
+    "react": "^16.9.0",
     "react-addons-css-transition-group": "^15.6.0",
-    "react-dom": "^16.0.0-rc",
+    "react-dom": "^16.9.0",
     "rimraf": "^2.5.4",
     "style-loader": "^0.16.1",
     "webpack": "^1.13.1",

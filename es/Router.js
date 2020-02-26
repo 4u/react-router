@@ -25,13 +25,16 @@ var propTypes = {
 
   // PRIVATE: For client-side rehydration of server match.
   matchContext: object
+};
 
-  /**
-   * A <Router> is a high-level API for automatically setting up
-   * a router that renders a <RouterContext> with all the props
-   * it needs each time the URL changes.
-   */
-};var Router = createReactClass({
+var prefixUnsafeLifecycleMethods = typeof React.forwardRef !== 'undefined';
+
+/**
+ * A <Router> is a high-level API for automatically setting up
+ * a router that renders a <RouterContext> with all the props
+ * it needs each time the URL changes.
+ */
+var Router = createReactClass({
   displayName: 'Router',
 
   propTypes: propTypes,
@@ -87,6 +90,9 @@ var propTypes = {
 
     return _createTransitionManager(history, createRoutes(routes || children));
   },
+
+
+  // this method will be updated to UNSAFE_componentWillMount below for React versions >= 16.3
   componentWillMount: function componentWillMount() {
     var _this = this;
 
@@ -106,6 +112,7 @@ var propTypes = {
   },
 
 
+  // this method will be updated to UNSAFE_componentWillReceiveProps below for React versions >= 16.3
   /* istanbul ignore next: sanity check */
   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
     process.env.NODE_ENV !== 'production' ? warning(nextProps.history === this.props.history, 'You cannot change <Router history>; it will be ignored') : void 0;
@@ -145,5 +152,12 @@ var propTypes = {
     }));
   }
 });
+
+if (prefixUnsafeLifecycleMethods) {
+  Router.prototype.UNSAFE_componentWillReceiveProps = Router.prototype.componentWillReceiveProps;
+  Router.prototype.UNSAFE_componentWillMount = Router.prototype.componentWillMount;
+  delete Router.prototype.componentWillReceiveProps;
+  delete Router.prototype.componentWillMount;
+}
 
 export default Router;
